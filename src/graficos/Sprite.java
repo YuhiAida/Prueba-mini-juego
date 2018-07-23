@@ -11,7 +11,7 @@ public final class Sprite {
     private final hojaSprites hoja;
     
     //
-    public static Sprite pasto = new Sprite(32, 0, 0, hojaSprites.escenario);
+    public static final Sprite PASTO = new Sprite(32, 0, 0, hojaSprites.escenario);
     //
     
     public Sprite(final int lado, final int columna, final int fila, final hojaSprites hoja) {
@@ -28,5 +28,9 @@ public final class Sprite {
                 pixeles[x + y * lado] = hoja.pixeles[(x + this.x) + (y + this.y) * hoja.obtenAncho()];
             }
         }
+    }
+    
+    public int getLado() {
+        return lado;
     }
 }

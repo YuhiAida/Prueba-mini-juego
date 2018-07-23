@@ -1,6 +1,8 @@
 
 package graficos;
 
+import mapas.cuadro.Cuadro;
+
 public class Pantalla {
     private final int ancho;
     private final int alto;
@@ -28,7 +30,7 @@ public class Pantalla {
             pixeles[i] = 0;
         }
     }
-    
+    //temporal 
     public void mostrar(final int compensacionX, final int compensacionY){
         
         for (int y = 0; y < alto; y++) {
@@ -42,10 +44,23 @@ public class Pantalla {
                     continue;
                 }
             //temporal
-            pixeles[posicionX + posicionY * ancho] = Sprite.pasto.pixeles[(x & MASCARA_SPRITE) + (y & MASCARA_SPRITE) * LADO_SPRITE];
+            pixeles[posicionX + posicionY * ancho] = Sprite.PASTO.pixeles[(x & MASCARA_SPRITE) + (y & MASCARA_SPRITE) * LADO_SPRITE];
 
             }
         }
     }
+    //---------------
     
+    public void mostrarCuadro(int compensacionX, int compensacionY, Cuadro cuadro){
+        for (int y = 0; y < Cuadro.sprite.getLado(); y++) {
+            int posicionY = y + compensacionY;
+            for (int x = 0; x < Cuadro.sprite.getLado(); x++) {
+                int posicionX = x + compensacionX;
+                if (posicionX < 0 || posicionX > ancho || posicionY < 0 || posicionY > alto) {
+                    break;
+                }
+                pixeles[posicionX + posicionY * ancho] = Cuadro.sprite.pixeles[x + y * Cuadro.sprite.getLado()];
+            }
+        }
+    }
 }

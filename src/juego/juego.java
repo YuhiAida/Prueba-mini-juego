@@ -4,6 +4,7 @@ import controles.teclado;
 import graficos.Pantalla;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
 import javax.swing.JFrame;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -12,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -40,6 +42,7 @@ public class juego extends Canvas implements Runnable{
     private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);
     private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();
     
+    private static final ImageIcon icono = new ImageIcon(juego.class.getResource("/recursos/icono.png"));
     private juego(){
         setPreferredSize(new Dimension(ANCHO, ALTO));
         
@@ -56,6 +59,7 @@ public class juego extends Canvas implements Runnable{
         ventana.pack();
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
+        ventana.setIconImage(icono.getImage());
     }
         public static void main(String[] args) {
         juego Juego = new juego();
@@ -110,6 +114,8 @@ public class juego extends Canvas implements Runnable{
             Graphics g = estrategia.getDrawGraphics();
             
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
+            g.setColor(Color.red);
+            g.fillRect(ANCHO/2, ALTO/2, 32, 32);
             g.dispose();
             
             estrategia.show();
@@ -145,7 +151,6 @@ public class juego extends Canvas implements Runnable{
             
             if (System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {
                 ventana.setTitle(NOMBRE + " || APS: " + aps + "|| FPS: " + fps);
-                System.out.println(fps);
                 aps = 0;
                 fps = 0;
                 referenciaContador = System.nanoTime();

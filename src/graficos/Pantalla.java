@@ -14,7 +14,7 @@ public class Pantalla {
     
     
     //
-    public static hojaSprites personaje = new hojaSprites("/recursos/1.png", 160, 96);
+    public static hojaSprites escenario = new hojaSprites("/recursos/1.png", 160, 96);
     //
     public Pantalla(final int ancho, final int alto) {
         this.ancho = ancho;
@@ -42,7 +42,7 @@ public class Pantalla {
                     continue;
                 }
             //temporal
-            pixeles[posicionX + posicionY * ancho] = Sprite.kirito.pixeles[(x & MASCARA_SPRITE) + (y & MASCARA_SPRITE) * LADO_SPRITE];
+            pixeles[posicionX + posicionY * ancho] = Sprite.pasto.pixeles[(x & MASCARA_SPRITE) + (y & MASCARA_SPRITE) * LADO_SPRITE];
 
             }
         }

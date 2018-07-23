@@ -13,7 +13,7 @@ public class hojaSprites {
     public final int[] pixeles;
     //
     
-    public static hojaSprites personaje = new hojaSprites("/recursos/1.png", 160, 96);
+    public static hojaSprites escenario = new hojaSprites("/recursos/1.png", 160, 96);
     
     //
     public hojaSprites(final String ruta, final int ancho, final int alto){
@@ -25,6 +25,7 @@ public class hojaSprites {
         BufferedImage imagen;
         try {
             imagen = ImageIO.read(hojaSprites.class.getResource(ruta));
+            
             imagen.getRGB(0, 0, ancho, alto, pixeles, 0, ancho);
         } catch (IOException ex) {
             Logger.getLogger(hojaSprites.class.getName()).log(Level.SEVERE, null, ex);

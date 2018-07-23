@@ -11,8 +11,9 @@ public final class Sprite {
     private final hojaSprites hoja;
     
     //
-    public static Sprite kirito = new Sprite(32, 0, 0, hojaSprites.personaje);
+    public static Sprite pasto = new Sprite(32, 0, 0, hojaSprites.escenario);
     //
+    
     public Sprite(final int lado, final int columna, final int fila, final hojaSprites hoja) {
 		this.lado = lado;
         
@@ -22,8 +23,8 @@ public final class Sprite {
 		this.y = fila * lado;
 		this.hoja = hoja;
         
-        for (int i = 0; i < lado; i++) {
-            for (int j = 0; j < lado; j++) {
+        for (int y = 0; y < lado; y++) {
+            for (int x = 0; x < lado; x++) {
                 pixeles[x + y * lado] = hoja.pixeles[(x + this.x) + (y + this.y) * hoja.obtenAncho()];
             }
         }

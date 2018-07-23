@@ -36,7 +36,7 @@ public class Pantalla {
             if (posicionY < 0 || posicionY >= alto) {
                 continue;
             }
-            for (int x = 0; x < 10; x++) {
+            for (int x = 0; x < ancho; x++) {
                 int posicionX = x + compensacionX;
                 if (posicionX <0 || posicionX >= ancho) {
                     continue;

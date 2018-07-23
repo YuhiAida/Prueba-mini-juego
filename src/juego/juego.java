@@ -81,16 +81,16 @@ public class juego extends Canvas implements Runnable{
         private void actualizar (){
             teclado.actualizar();
             if (teclado.arriba) {
-                System.out.println("arriba");
+                y++;
             }
             if (teclado.abajo) {
-                System.out.println("abajo");
+                y--;
             }
             if (teclado.izquierda) {
-                System.out.println("izquierda");
+                x++;
             }
             if (teclado.derecha) {
-                System.out.println("derecha");
+                x--;
             }
             aps++;
         }
@@ -145,6 +145,7 @@ public class juego extends Canvas implements Runnable{
             
             if (System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {
                 ventana.setTitle(NOMBRE + " || APS: " + aps + "|| FPS: " + fps);
+                System.out.println(fps);
                 aps = 0;
                 fps = 0;
                 referenciaContador = System.nanoTime();
